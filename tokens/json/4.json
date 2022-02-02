@@ -1,9 +1,9 @@
 {
-    "title": "Token Metadata",
+    "title": "Azula",
     "type": "object",
-    "id": "4",
-    "name": "",
-    "image": "",
+    "id": "3",
+    "name": "Azula",
+    "image": "https://ipfs.io/ipfs/QmargHbDpt62C7SmxSWPL9sEDFbWerZYd9pijNJ1TghwyC/4.png",
     "properties": {
         "name": {
             "type": "string",

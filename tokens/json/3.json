@@ -1,9 +1,9 @@
 {
-    "title": "Token Metadata",
+    "title": "Katara",
     "type": "object",
     "id": "3",
-    "name": "",
-    "image": "",
+    "name": "Katara",
+    "image": "https://ipfs.io/ipfs/QmargHbDpt62C7SmxSWPL9sEDFbWerZYd9pijNJ1TghwyC/3.png",
     "properties": {
         "name": {
             "type": "string",

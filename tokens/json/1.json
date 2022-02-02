@@ -1,9 +1,9 @@
 {
-    "title": "Token Metadata",
+    "title": "Aang",
     "type": "object",
     "id": "1",
-    "name": "",
-    "image": "",
+    "name": "Aang",
+    "image": "https://ipfs.io/ipfs/QmargHbDpt62C7SmxSWPL9sEDFbWerZYd9pijNJ1TghwyC/1.png",
     "properties": {
         "name": {
             "type": "string",

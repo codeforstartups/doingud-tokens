@@ -1,9 +1,9 @@
 {
-    "title": "Token Metadata",
+    "title": "Iroh",
     "type": "object",
     "id": "9",
-    "name": "",
-    "image": "",
+    "name": "Iroh",
+    "image": "https://ipfs.io/ipfs/QmargHbDpt62C7SmxSWPL9sEDFbWerZYd9pijNJ1TghwyC/9.png",
     "properties": {
         "name": {
             "type": "string",

@@ -1,9 +1,9 @@
 {
-    "title": "Token Metadata",
+    "title": "Suki",
     "type": "object",
     "id": "11",
-    "name": "",
-    "image": "",
+    "name": "Suki",
+    "image": "https://ipfs.io/ipfs/QmargHbDpt62C7SmxSWPL9sEDFbWerZYd9pijNJ1TghwyC/11.png",
     "properties": {
         "name": {
             "type": "string",

@@ -1,9 +1,9 @@
 {
-    "title": "Token Metadata",
+    "title": "TyLee",
     "type": "object",
     "id": "7",
-    "name": "",
-    "image": "",
+    "name": "TyLee",
+    "image": "https://ipfs.io/ipfs/QmargHbDpt62C7SmxSWPL9sEDFbWerZYd9pijNJ1TghwyC/7.png",
     "properties": {
         "name": {
             "type": "string",

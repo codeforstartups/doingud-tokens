@@ -1,9 +1,9 @@
 {
-    "title": "Token Metadata",
+    "title": "Sokka",
     "type": "object",
     "id": "6",
-    "name": "",
-    "image": "",
+    "name": "Sokka",
+    "image": "https://ipfs.io/ipfs/QmargHbDpt62C7SmxSWPL9sEDFbWerZYd9pijNJ1TghwyC/6.png",
     "properties": {
         "name": {
             "type": "string",

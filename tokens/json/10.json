@@ -1,9 +1,9 @@
 {
-    "title": "Token Metadata",
+    "title": "Ozai",
     "type": "object",
     "id": "10",
-    "name": "",
-    "image": "",
+    "name": "Ozai",
+    "image": "https://ipfs.io/ipfs/QmargHbDpt62C7SmxSWPL9sEDFbWerZYd9pijNJ1TghwyC/10.png",
     "properties": {
         "name": {
             "type": "string",

@@ -1,9 +1,9 @@
 {
-    "title": "Token Metadata",
+    "title": "Princess",
     "type": "object",
     "id": "12",
-    "name": "",
-    "image": "",
+    "name": "Princess",
+    "image": "https://ipfs.io/ipfs/QmargHbDpt62C7SmxSWPL9sEDFbWerZYd9pijNJ1TghwyC/12.png",
     "properties": {
         "name": {
             "type": "string",

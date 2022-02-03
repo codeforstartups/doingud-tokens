@@ -55,4 +55,6 @@ contract DGDTokenContract is ERC1155 {
         _mint(msg.sender  , SUKI , 100 , "");
         _mint(msg.sender  , PRINCES , 100 , "");
     }
+
+    
 }

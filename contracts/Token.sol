@@ -1,5 +1,5 @@
 //Contracts/Token.sol
-//SPDX-License-Indentifier : MIT
+//SPDX-License-Identifier: MIT
 
 pragma solidity ^0.8.0;
 
@@ -41,18 +41,38 @@ contract DGDTokenContract is ERC1155 {
     uint256 public constant SUKI = 11;
     uint256 public constant PRINCES = 12;
 
+    constructor()
+        public
+        ERC1155(
+            "https://ipfs.io/ipfs/QmUV9LAbQnJwaoW2WUN9vAZo8riFWL26y33cNtmgNayAWC/{id}.json"
+        )
+    {
+        _mint(msg.sender, AANG, 100, "");
+        _mint(msg.sender, ZUKO, 100, "");
+        _mint(msg.sender, KATARA, 100, "");
+        _mint(msg.sender, AZULA, 100, "");
+        _mint(msg.sender, BEIFONG, 100, "");
+        _mint(msg.sender, SOKKA, 100, "");
+        _mint(msg.sender, TYLEE, 100, "");
+        _mint(msg.sender, APPA, 100, "");
+        _mint(msg.sender, OZAI, 100, "");
+        _mint(msg.sender, SUKI, 100, "");
+        _mint(msg.sender, PRINCES, 100, "");
+    }
 
-    constructor() public ERC1155("https://ipfs.io/ipfs/QmUV9LAbQnJwaoW2WUN9vAZo8riFWL26y33cNtmgNayAWC/{id}.json"){
-        _mint(msg.sender  , AANG , 100 , "");
-        _mint(msg.sender  , ZUKO , 100 , "");
-        _mint(msg.sender  , KATARA , 100 , "");
-        _mint(msg.sender  , AZULA , 100 , "");
-        _mint(msg.sender  , BEIFONG , 100 , "");
-        _mint(msg.sender  , SOKKA , 100 , "");
-        _mint(msg.sender  , TYLEE , 100 , "");
-        _mint(msg.sender  , APPA , 100 , "");
-        _mint(msg.sender  , OZAI , 100 , "");
-        _mint(msg.sender  , SUKI , 100 , "");
-        _mint(msg.sender  , PRINCES , 100 , "");
+    function uri(uint256 _tokenId)
+        public
+        override
+        view
+        returns (string memory)
+    {
+        return
+            string(
+                abi.encodePacked(
+                    "https://ipfs.io/ipfs/QmUV9LAbQnJwaoW2WUN9vAZo8riFWL26y33cNtmgNayAWC/",
+                    Strings.toString(_tokenId),
+                    ".json"
+                )
+            );
     }
 }

@@ -41,6 +41,14 @@ contract ProxyRegistry {
 }
 
 contract DGDTokenContract is ERC1155 , Ownable{
+
+    /**
+      * Challenge number 1
+      * Minting ERC1155 tokens 
+      * listing it to opensea
+      * contract on rinkby testnet 
+      * ipfs metadata with schema of ERC1155
+     */
     uint256 public constant AANG = 1;
     uint256 public constant ZUKO = 2;
     uint256 public constant KATARA = 3;
@@ -125,6 +133,7 @@ contract DGDTokenContract is ERC1155 , Ownable{
     }
 
     /**
+        * * Challenge number 2
         Batch Transfer: Transfer multiple assets in a single call.
         Batch Balance: Get the balances of multiple assets in a single call.
         Batch Approval: Approve all tokens to an address.
@@ -136,10 +145,31 @@ contract DGDTokenContract is ERC1155 , Ownable{
     
     bool isAccessAllowed;
 
+
+    /**
+      * The idea of his functions is the following 
+      * transfering nfts | purchase nfts from a marketplace 
+      * user has that particular nft in his wallets with initialSupplies[] & ids[]
+      * if the ids, matches with balanceOf(visitor_address) then he will get specail access
+     */
+
     function userAccessNFTGating(uint _tokenId) public view returns(bool) {
 
-    }   
+    }
 
+    /**
+        * * Challenge number 3
+        Batch Transfer: Transfer multiple assets in a single call.
+        Batch Balance: Get the balances of multiple assets in a single call.
+        Batch Approval: Approve all tokens to an address.
+        EIP-165 Support: Declare supported interfaces.
+        Hooks: Receive tokens hook.
+        NFT support: If supply is only 1, treat it as NFT.
+        Safe Transfer Rules: Set of rules for secure transfer.
+    */
+    function wrappingNfts(address to ,  uint256[] memory ids , uint256[] memory amounts ) {
+
+    }
     
     function mintBatch(address to, uint256[] memory ids, uint256[] memory amounts , bytes memory data) public onlyOwner{
         _mintBatch(to , ids , amounts , data);

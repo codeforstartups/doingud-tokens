@@ -1,9 +1,13 @@
 //Contracts/Token.sol
 //SPDX-License-Identifier: MIT
 
-pragma solidity ^0.8.10;
+pragma solidity ^0.8.0;
 
 /**
+
+ * OpenSea Testnet : https://testnets.opensea.io/assets/0xad4053fc41570e8fecb8fca9b3bc924eac83a880/12
+ * Rinkby Contract : https://rinkeby.etherscan.io/tx/0x1323d7f5cab8580c18c59987fba81fc5d3583f94df15f01f1b45f84d312b466a
+
  * https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1155.md#erc-1155-metadata-uri-json-schema
  
  * ability for holders to burn (destroy) their tokens
@@ -43,12 +47,15 @@ contract DGDTokenContract is ERC1155 , Ownable{
     uint256 public constant AZULA = 4;
     uint256 public constant BEIFONG = 5;
 
+    mapping( uint256 => string) private _uris;
+
     address owner = 0x15977c6EA676299C697057b443eBff85cE0bF146;
     address visitor = 0x63dA72e8D2C5847BEb823E758892855F3A604936;
 
     uint256[] initialSupplies = [100,100,100,100,100];
     uint256[] minted = [0,0,0,0,0];
-    
+    uint256[] prices = [0.01 ether , 0.02 ether ,  0.03 ether ,  0.04 ether ,  0.05 ether ];
+
     constructor(address owner_)
         public
         ERC1155(
@@ -65,33 +72,36 @@ contract DGDTokenContract is ERC1155 , Ownable{
         _;
     }
 
-    function mint(address account, uint256 id, uint256 amount, byte memory data) public onlyOwner{
+    function mint(address account, uint256 id, uint256 amount) payable public onlyOwner{
 
 
         require(id <= initialSupplies.length, "Token does't exists");
-
-        require(id != 0, "Hooo, this we don't offer!");
+ 
+        require(id > 0, "Hooo, this we don't offer!");
 
         uint256 index = id -1;
 
         require(minted[index] + amount <= initialSupplies[index] , "For this token we don't have supplies");
 
-        _mint(account , id , amount , data);
+        require(msg.value >= amount * prices[index] , "The amount is less");
+
+        _mint(account , id , amount , "");
 
         minted[index] += amount; // after the minting is successful we will increase the amount for the supplies | reentrancy attack
 
     }
 
-    function mintBatch(address to, uint256[] memory ids, uint256[] memory amounts , bytes memory data) public onlyOwner{
-        _mintBatch(to , ids , amounts , data);
+    function createERC1155Tokens(uint256 initialSupply) external onlyOwner{
+        mint(owner, AANG, initialSupply[0], "");
+        mint(owner, ZUKO, initialSupply[1], "");
+        mint(owner, KATARA, initialSupply[2], "");
+        mint(owner, AZULA, initialSupply[3], "");
+        mint(owner, BEIFONG, initialSupply[4], "");
     }
 
-    function createERC1155Tokens(uint256 initialSupply) external onlyOwner{
-        mint(owner, AANG, initialSupply, "");
-        mint(owner, ZUKO, initialSupply, "");
-        mint(owner, KATARA, initialSupply, "");
-        mint(owner, AZULA, initialSupply, "");
-        mint(owner, BEIFONG, initialSupply, "");
+    function withdraw() public onlyOwner{
+        require(address(this).balance > 0 , "Not enought balance in the contract");
+        payable(owner()).transfer(address(this).balance);
     }
 
     function uri(uint256 _tokenId)
@@ -100,14 +110,18 @@ contract DGDTokenContract is ERC1155 , Ownable{
         view
         returns (string memory)
     {
-        return
-            string(
+        return string(
                 abi.encodePacked(
                     "https://ipfs.io/ipfs/QmUV9LAbQnJwaoW2WUN9vAZo8riFWL26y33cNtmgNayAWC/",
                     Strings.toString(_tokenId),
                     ".json"
                 )
             );
+    }
+
+    function setTokenUri(uint256 tokenId , string memory uri) public {
+        require(bytes(_uris[tokenId]).length == 0, "Cannot set uri twice");
+        _uris[tokenId] = uri;
     }
 
     /**
@@ -125,6 +139,11 @@ contract DGDTokenContract is ERC1155 , Ownable{
     function userAccessNFTGating(uint _tokenId) public view returns(bool) {
 
     }   
+
+    
+    function mintBatch(address to, uint256[] memory ids, uint256[] memory amounts , bytes memory data) public onlyOwner{
+        _mintBatch(to , ids , amounts , data);
+    }
 
     
 }
